@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegance with Rey | Luxury Jewelry & Fashion Accessories</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display, Great Vibes (for classic dual branding), Cormorant Garamond, & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        champagne: '#D4AF37',
+                        goldaccent: '#E5C158',
+                        warmgold: '#C5A059',
+                        darkobsidian: '#0B0B0B',
+                        richblack: '#121212',
+                        cream: '#FAF8F5'
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        garamond: ['Cormorant Garamond', 'serif'],
+                        vibes: ['Great Vibes', 'cursive'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbar and smooth behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FAF8F5;
+            color: #121212;
+            overflow-x: hidden;
+        }
+        
+        /* Dual Logo Classic Fonts */
+        .brand-elegance {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.18em;
+        }
+        .brand-with-rey {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Vivid Hero Background Styling */
+        .hero-bg-overlay {
+            background: linear-gradient(180deg, rgba(11, 11, 11, 0.88) 0%, rgba(18, 18, 18, 0.94) 100%), 
+                        url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Card Hover Effects */
+        .classic-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .classic-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(197, 160, 89, 0.15);
+        }
+
+        .img-zoom {
+            transition: transform 0.6s ease;
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-champagne selection:text-black">
+
+    <!-- 1. HEADER & TOP NAVIGATION BOARD -->
+    <header class="sticky top-0 z-50 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-warmgold/20 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                
+                <!-- Left Nav Links -->
+                <nav class="hidden md:flex space-x-8 text-xs font-semibold tracking-[0.2em] uppercase text-richblack">
+                    <a href="#home" class="hover:text-champagne transition-colors py-1 border-b-2 border-transparent hover:border-champagne">Home</a>
+                    <a href="#collections" class="hover:text-champagne transition-colors py-1 border-b-2 border-transparent hover:border-champagne">Collections</a>
+                    <a href="#jewelries" class="hover:text-champagne transition-colors py-1 border-b-2 border-transparent hover:border-champagne">Jewelries</a>
+                    <a href="#necklaces" class="hover:text-champagne transition-colors py-1 border-b-2 border-transparent hover:border-champagne">Necklaces</a>
+                </nav>
+
+                <!-- Mobile Hamburger Toggle -->
+                <button id="mobile-toggle" class="md:hidden text-richblack p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+
+                <!-- Center Business Name Branding -->
+                <div class="text-center">
+                    <a href="#home" class="inline-flex flex-col items-center group">
+                        <span class="brand-elegance text-xl sm:text-2xl md:text-3xl font-bold uppercase text-richblack group-hover:text-warmgold transition-colors">
+                            ELEGANCE
+                        </span>
+                        <span class="brand-with-rey text-lg sm:text-xl md:text-2xl text-champagne -mt-2 capitalize tracking-normal">
+                            with Rey
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Right Utility Icons (Search + Cart) -->
+                <div class="flex items-center space-x-5 text-richblack">
+                    <button onclick="toggleSearch(true)" class="p-2 hover:text-champagne transition-colors focus:outline-none" title="Search">
+                        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                    </button>
+                    <button onclick="toggleCartDrawer(true)" class="p-2 hover:text-champagne transition-colors relative focus:outline-none" title="Shopping Bag">
+                        <i class="fa-solid fa-bag-shopping text-lg"></i>
+                        <span id="cart-badge" class="absolute top-1 right-0 bg-champagne text-darkobsidian text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-darkobsidian/80 backdrop-blur-sm z-50 hidden flex-col p-6 transition-all duration-300">
+        <div class="flex justify-between items-center border-b border-warmgold/30 pb-4">
+            <span class="brand-elegance text-lg font-bold text-white">ELEGANCE <span class="brand-with-rey text-champagne text-base">with Rey</span></span>
+            <button id="mobile-close" class="text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <nav class="flex flex-col space-y-6 mt-8 text-center text-sm uppercase tracking-widest text-gray-200 font-semibold">
+            <a href="#home" class="mobile-nav-link hover:text-champagne">Home</a>
+            <a href="#collections" class="mobile-nav-link hover:text-champagne">Collections</a>
+            <a href="#jewelries" class="mobile-nav-link hover:text-champagne">Jewelries</a>
+            <a href="#necklaces" class="mobile-nav-link hover:text-champagne">Necklaces</a>
+        </nav>
+    </div>
+
+    <!-- 2. HERO SECTION / BANNER BOARD -->
+    <section id="home" class="relative hero-bg-overlay py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-warmgold/30 shadow-2xl">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            
+            <!-- Top Line Business Name Accent -->
+            <p class="brand-with-rey text-xl sm:text-2xl text-champagne tracking-wider mb-2">
+                Elegance with Rey
+            </p>
+
+            <!-- Main Headline -->
+            <h1 class="font-playfair text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-wider uppercase leading-tight mb-4">
+                Timeless Elegance Redefined
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-xs sm:text-sm font-light text-gray-200 tracking-widest max-w-2xl mx-auto mb-10 leading-relaxed">
+                discover more necklace, gold rings, accessories curated for the discerning individual
+            </p>
+
+            <!-- CTA Button Box -->
+            <div>
+                <a href="#products" class="inline-block bg-champagne hover:bg-goldaccent text-darkobsidian font-bold text-xs uppercase tracking-[0.25em] px-8 py-4 border border-goldaccent transition-all duration-300 shadow-xl hover:scale-105">
+                    Explore Collections
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. HORIZONTAL FEATURE CARDS (4 BOXES IN A ROW) -->
+    <section id="collections" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Box 1: Gold Diamond -->
+            <div class="classic-card bg-white p-6 border border-warmgold/20 flex flex-col justify-between text-center group">
+                <div class="overflow-hidden h-48 mb-4 relative bg-cream">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80" alt="Gold Diamond" class="w-full h-full object-cover img-zoom">
+                </div>
+                <div>
+                    <h3 class="font-playfair font-bold text-base text-richblack mb-2 uppercase tracking-wider">Gold Diamond</h3>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">Bespoke diamond craftsmanship crafted with regal purity and eternal majesty.</p>
+                </div>
+            </div>
+
+            <!-- Box 2: Vivid Yellow Gold Necklace -->
+            <div class="classic-card bg-white p-6 border border-warmgold/20 flex flex-col justify-between text-center group">
+                <div class="overflow-hidden h-48 mb-4 relative bg-cream">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" alt="Vivid Yellow Gold Necklace" class="w-full h-full object-cover img-zoom">
+                </div>
+                <div>
+                    <h3 class="font-playfair font-bold text-base text-richblack mb-2 uppercase tracking-wider">Vivid Yellow Gold Necklace</h3>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">Luminous yellow gold chains handcrafted to elevate every royal gala appearance.</p>
+                </div>
+            </div>
+
+            <!-- Box 3: Gold Watch -->
+            <div class="classic-card bg-white p-6 border border-warmgold/20 flex flex-col justify-between text-center group">
+                <div class="overflow-hidden h-48 mb-4 relative bg-cream">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80" alt="Gold Watch" class="w-full h-full object-cover img-zoom">
+                </div>
+                <div>
+                    <h3 class="font-playfair font-bold text-base text-richblack mb-2 uppercase tracking-wider">Gold Watch</h3>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">Precision horology adorned with gold accents for those who treasure time elegantly.</p>
+                </div>
+            </div>
+
+            <!-- Box 4: Instagram Communication -->
+            <div class="classic-card bg-darkobsidian text-white p-6 border border-warmgold/40 flex flex-col justify-between text-center group relative">
+                <div class="h-48 mb-4 flex flex-col items-center justify-center bg-richblack border border-warmgold/20 p-4">
+                    <i class="fa-brands fa-instagram text-5xl text-champagne mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="brand-with-rey text-lg text-champagne">@elegance_with_rey</span>
+                </div>
+                <div>
+                    <h3 class="font-playfair font-bold text-base text-white mb-2 uppercase tracking-wider">Direct Instagram Connect</h3>
+                    <p class="text-xs text-gray-300 font-light leading-relaxed">Join our private community or message us directly on Instagram for custom bespoke consultations.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. CURATED CATEGORIES SECTION -->
+    <section id="jewelries" class="py-16 bg-cream border-t border-b border-warmgold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <span class="text-[11px] font-bold tracking-[0.3em] uppercase text-champagne block mb-2">CURATED CATEGORIES</span>
+                <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-richblack uppercase tracking-wider">Shop by Category</h2>
+                <div class="w-20 h-0.5 bg-champagne mx-auto mt-4"></div>
+            </div>
+
+            <!-- 4 Visual Category Previews -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                
+                <!-- Category 1: Necklaces -->
+                <div onclick="filterCategory('necklaces')" class="group relative h-80 overflow-hidden cursor-pointer border border-warmgold/30">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" alt="Necklaces" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkobsidian/90 via-darkobsidian/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-0 right-0 text-center">
+                        <h3 class="font-playfair text-2xl text-white font-bold uppercase tracking-widest">Necklaces</h3>
+                        <p class="text-[11px] text-champagne tracking-widest uppercase mt-1">Explore Collection &rarr;</p>
+                    </div>
+                </div>
+
+                <!-- Category 2: Rings -->
+                <div onclick="filterCategory('rings')" class="group relative h-80 overflow-hidden cursor-pointer border border-warmgold/30">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80" alt="Rings" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkobsidian/90 via-darkobsidian/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-0 right-0 text-center">
+                        <h3 class="font-playfair text-2xl text-white font-bold uppercase tracking-widest">Rings</h3>
+                        <p class="text-[11px] text-champagne tracking-widest uppercase mt-1">Explore Collection &rarr;</p>
+                    </div>
+                </div>
+
+                <!-- Category 3: Earrings -->
+                <div onclick="filterCategory('earrings')" class="group relative h-80 overflow-hidden cursor-pointer border border-warmgold/30">
+                    <img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=600&q=80" alt="Earrings" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkobsidian/90 via-darkobsidian/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-0 right-0 text-center">
+                        <h3 class="font-playfair text-2xl text-white font-bold uppercase tracking-widest">Earrings</h3>
+                        <p class="text-[11px] text-champagne tracking-widest uppercase mt-1">Explore Collection &rarr;</p>
+                    </div>
+                </div>
+
+                <!-- Category 4: Bracelets -->
+                <div onclick="filterCategory('bracelets')" class="group relative h-80 overflow-hidden cursor-pointer border border-warmgold/30">
+                    <img src="https://images.unsplash.com/photo-1611591475155-4282faa209e2?auto=format&fit=crop&w=600&q=80" alt="Bracelets" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkobsidian/90 via-darkobsidian/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-0 right-0 text-center">
+                        <h3 class="font-playfair text-2xl text-white font-bold uppercase tracking-widest">Bracelets</h3>
+                        <p class="text-[11px] text-champagne tracking-widest uppercase mt-1">Explore Collection &rarr;</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Category Filter Tabs Box -->
+            <div id="necklaces" class="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto mb-10 text-xs font-semibold uppercase tracking-widest">
+                <button onclick="filterCategory('all')" class="cat-filter-btn active bg-champagne text-darkobsidian px-5 py-2.5 border border-champagne transition-all" data-cat="all">All Items</button>
+                <button onclick="filterCategory('necklaces')" class="cat-filter-btn bg-white text-richblack px-5 py-2.5 border border-warmgold/30 hover:border-champagne transition-all" data-cat="necklaces">Necklaces</button>
+                <button onclick="filterCategory('rings')" class="cat-filter-btn bg-white text-richblack px-5 py-2.5 border border-warmgold/30 hover:border-champagne transition-all" data-cat="rings">Rings</button>
+                <button onclick="filterCategory('earrings')" class="cat-filter-btn bg-white text-richblack px-5 py-2.5 border border-warmgold/30 hover:border-champagne transition-all" data-cat="earrings">Earrings</button>
+                <button onclick="filterCategory('bracelets')" class="cat-filter-btn bg-white text-richblack px-5 py-2.5 border border-warmgold/30 hover:border-champagne transition-all" data-cat="bracelets">Bracelets</button>
+            </div>
+
+            <!-- 5. FEATURED PRODUCTS GRID (8 ITEMS PRICED $2-$5) -->
+            <div id="products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Javascript will inject 8 luxury items -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. TESTIMONIAL & QUOTE SECTION -->
+    <section class="py-20 bg-darkobsidian text-white border-t border-b border-warmgold/40 relative">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            
+            <!-- 5 Stars -->
+            <div class="flex justify-center space-x-1 text-champagne text-lg mb-6">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+
+            <!-- Quote Text -->
+            <blockquote class="font-garamond text-xl sm:text-2xl md:text-3xl italic font-light text-gray-200 leading-relaxed mb-8">
+                "The custom downs brand from Elegance Ray exceeded every expectation. It carries a timeless majesty that turns head at every gather."
+            </blockquote>
+
+            <!-- Author Citation -->
+            <div class="flex flex-col items-center">
+                <span class="brand-with-rey text-3xl text-champagne mb-1">Rey</span>
+                <span class="text-[10px] uppercase tracking-[0.3em] text-gray-400">Founder & Chief Designer</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 7. FOOTER & INSTAGRAM BRANDING -->
+    <footer class="bg-richblack text-gray-400 pt-16 pb-12 border-t border-warmgold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Instagram Header Call -->
+            <div class="text-center mb-12">
+                <p class="text-xs uppercase tracking-[0.25em] text-champagne font-semibold mb-2">Connect With Us</p>
+                <h3 class="font-playfair text-2xl sm:text-3xl font-bold text-white uppercase tracking-wider mb-3">Follow Elegance with Rey on Instagram</h3>
+                <a href="https://www.instagram.com/elegance_with_rey" target="_blank" class="inline-flex items-center space-x-2 text-champagne hover:text-white transition-colors text-sm font-semibold tracking-widest">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                    <span>@elegance_with_rey</span>
+                </a>
+            </div>
+
+            <!-- Main Footer Info -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-gray-800">
+                
+                <!-- Col 1: About Elegance with Rey -->
+                <div>
+                    <div class="mb-4">
+                        <span class="brand-elegance text-xl font-bold text-white uppercase">ELEGANCE </span>
+                        <span class="brand-with-rey text-xl text-champagne">with Rey</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed font-light">
+                        Elegance with Rey is a premier luxury fashion and jewelry atelier dedicated to crafting timeless pieces that express regal majesty, royal sophistication, and classic beauty for every special occasion.
+                    </p>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div class="md:text-center">
+                    <h4 class="font-playfair text-sm text-white uppercase tracking-widest mb-4 font-bold">Quick Navigation</h4>
+                    <ul class="space-y-2 text-xs uppercase tracking-wider">
+                        <li><a href="#home" class="hover:text-champagne transition-colors">Home</a></li>
+                        <li><a href="#collections" class="hover:text-champagne transition-colors">Collections</a></li>
+                        <li><a href="#jewelries" class="hover:text-champagne transition-colors">Jewelries</a></li>
+                        <li><a href="#necklaces" class="hover:text-champagne transition-colors">Necklaces</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Newsletter & Contact -->
+                <div>
+                    <h4 class="font-playfair text-sm text-white uppercase tracking-widest mb-4 font-bold">Private VIP Access</h4>
+                    <p class="text-xs text-gray-400 font-light mb-4">Receive invitations to private collection reveals and bespoke design consultations.</p>
+                    <form onsubmit="event.preventDefault(); alert('Thank you for subscribing to Elegance with Rey.');" class="flex">
+                        <input type="email" placeholder="Your email address" required class="bg-darkobsidian border border-gray-700 text-xs p-3 text-white flex-1 focus:outline-none focus:border-champagne">
+                        <button type="submit" class="bg-champagne text-darkobsidian font-bold text-xs uppercase px-4 hover:bg-goldaccent transition-colors">Join</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 text-center text-xs text-gray-500 font-light">
+                <p>&copy; 2026 Elegance with Rey. All Rights Reserved. Designed for Luxury & Elegance.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Slide-Out Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 bg-darkobsidian/70 backdrop-blur-sm z-50 hidden justify-end transition-opacity">
+        <div class="w-full max-w-md bg-white h-full p-6 flex flex-col justify-between shadow-2xl overflow-y-auto">
+            <div>
+                <div class="flex justify-between items-center pb-4 border-b border-warmgold/20">
+                    <h3 class="font-playfair font-bold text-lg uppercase text-richblack">Your Cart</h3>
+                    <button onclick="toggleCartDrawer(false)" class="text-xl text-gray-500 hover:text-black"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="cart-items" class="py-6 space-y-4">
+                    <!-- Dynamic Cart Items -->
+                </div>
+            </div>
+            <div class="border-t border-warmgold/20 pt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xs uppercase font-semibold text-gray-500">Subtotal:</span>
+                    <span id="cart-total" class="font-playfair font-bold text-lg text-richblack">$0.00</span>
+                </div>
+                <button onclick="alert('Proceeding to VIP Checkout!');" class="w-full bg-champagne text-darkobsidian font-bold py-3 text-xs uppercase tracking-widest hover:bg-goldaccent transition-colors">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="fixed inset-0 bg-darkobsidian/90 backdrop-blur-md z-50 hidden flex-col items-center justify-center p-4">
+        <button onclick="toggleSearch(false)" class="absolute top-6 right-6 text-white text-3xl"><i class="fa-solid fa-xmark"></i></button>
+        <div class="max-w-md w-full text-center">
+            <h3 class="font-playfair text-2xl text-white uppercase tracking-wider mb-6">Search Collection</h3>
+            <input type="text" id="search-input" onkeyup="handleSearch()" placeholder="Search necklaces, rings, gold..." class="w-full bg-transparent border-b-2 border-champagne text-xl text-white py-2 px-4 focus:outline-none placeholder-gray-500 text-center">
+            <div id="search-results" class="mt-6 text-left text-white space-y-2 max-h-60 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <script>
+        // Catalog Products: 8 items priced between $2.00 to $5.00
+        const catalogProducts = [
+            { id: 1, name: "Royal Gold Diamond Ring", category: "rings", price: 4.99, image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80" },
+            { id: 2, name: "Vivid Yellow Gold Pendant", category: "necklaces", price: 3.50, image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" },
+            { id: 3, name: "Regal Sapphire Drop Earrings", category: "earrings", price: 2.99, image: "https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=600&q=80" },
+            { id: 4, name: "Celestial Rose Gold Bracelet", category: "bracelets", price: 4.50, image: "https://images.unsplash.com/photo-1611591475155-4282faa209e2?auto=format&fit=crop&w=600&q=80" },
+            { id: 5, name: "Empress Diamond Stacking Band", category: "rings", price: 3.99, image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=600&q=80" },
+            { id: 6, name: "Aura Chandelier Pearl Drops", category: "earrings", price: 2.50, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" },
+            { id: 7, name: "Duchess Gold Tennis Bracelet", category: "bracelets", price: 4.25, image: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=600&q=80" },
+            { id: 8, name: "Heritage Gold Choker", category: "necklaces", price: 3.99, image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80" }
+        ];
+
+        let shoppingCart = [];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderProducts(catalogProducts);
+            setupMobileMenu();
+        });
+
+        // Render Product Cards
+        function renderProducts(items) {
+            const grid = document.getElementById("products");
+            if (!grid) return;
+
+            grid.innerHTML = items.map(product => `
+                <div class="classic-card bg-white p-4 border border-warmgold/20 flex flex-col justify-between group">
+                    <div>
+                        <div class="overflow-hidden h-56 bg-cream mb-4 relative">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-2 left-2 bg-darkobsidian text-champagne text-[9px] uppercase font-bold tracking-widest px-2 py-1">${product.category}</span>
+                        </div>
+                        <h3 class="font-playfair text-sm font-bold text-richblack mb-1 line-clamp-1 uppercase">${product.name}</h3>
+                        <p class="text-xs font-bold text-champagne mb-3">$${product.price.toFixed(2)}</p>
+                    </div>
+                    <button onclick="addToCart(${product.id})" class="w-full bg-richblack hover:bg-champagne hover:text-darkobsidian text-white text-[10px] uppercase tracking-widest font-bold py-2.5 transition-colors">
+                        Add To Bag
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Filter Products
+        function filterCategory(category) {
+            document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+                if (btn.dataset.cat === category) {
+                    btn.classList.add('bg-champagne', 'text-darkobsidian', 'border-champagne');
+                    btn.classList.remove('bg-white', 'text-richblack');
+                } else {
+                    btn.classList.remove('bg-champagne', 'text-darkobsidian', 'border-champagne');
+                    btn.classList.add('bg-white', 'text-richblack');
+                }
+            });
+
+            if (category === 'all') {
+                renderProducts(catalogProducts);
+            } else {
+                const filtered = catalogProducts.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        // Cart Actions
+        function addToCart(id) {
+            const item = catalogProducts.find(p => p.id === id);
+            if (!item) return;
+
+            const existing = shoppingCart.find(c => c.id === id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                shoppingCart.push({ ...item, qty: 1 });
+            }
+
+            updateCartUI();
+            toggleCartDrawer(true);
+        }
+
+        function updateCartUI() {
+            const countBadge = document.getElementById("cart-badge");
+            const cartContainer = document.getElementById("cart-items");
+            const totalEl = document.getElementById("cart-total");
+
+            const totalItems = shoppingCart.reduce((sum, item) => sum + item.qty, 0);
+            countBadge.innerText = totalItems;
+
+            if (shoppingCart.length === 0) {
+                cartContainer.innerHTML = `<p class="text-xs text-gray-400 text-center py-8">Your cart is currently empty.</p>`;
+                totalEl.innerText = "$0.00";
+                return;
+            }
+
+            let subtotal = 0;
+            cartContainer.innerHTML = shoppingCart.map(item => {
+                subtotal += item.price * item.qty;
+                return `
+                    <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+                        <div class="flex items-center space-x-3">
+                            <img src="${item.image}" class="w-12 h-12 object-cover border">
+                            <div>
+                                <h4 class="font-playfair text-xs font-bold text-richblack">${item.name}</h4>
+                                <p class="text-xs text-champagne font-bold">$${item.price.toFixed(2)} x ${item.qty}</p>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-xs text-gray-400 hover:text-red-500"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            }).join('');
+
+            totalEl.innerText = `$${subtotal.toFixed(2)}`;
+        }
+
+        function removeFromCart(id) {
+            shoppingCart = shoppingCart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        function toggleCartDrawer(open) {
+            const drawer = document.getElementById("cart-drawer");
+            drawer.style.display = open ? 'flex' : 'none';
+        }
+
+        // Search Overlay
+        function toggleSearch(open) {
+            const modal = document.getElementById("search-modal");
+            modal.style.display = open ? 'flex' : 'none';
+            if (open) document.getElementById("search-input").focus();
+        }
+
+        function handleSearch() {
+            const query = document.getElementById("search-input").value.toLowerCase();
+            const results = document.getElementById("search-results");
+
+            if (!query.trim()) {
+                results.innerHTML = "";
+                return;
+            }
+
+            const matches = catalogProducts.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+            if (matches.length === 0) {
+                results.innerHTML = `<p class="text-xs text-gray-400">No items found.</p>`;
+                return;
+            }
+
+            results.innerHTML = matches.map(m => `
+                <div onclick="addToCart(${m.id}); toggleSearch(false);" class="p-2 bg-white/10 hover:bg-champagne/20 cursor-pointer flex justify-between text-xs">
+                    <span>${m.name}</span>
+                    <span class="text-champagne font-bold">$${m.price.toFixed(2)}</span>
+                </div>
+            `).join('');
+        }
+
+        // Mobile Menu Setup
+        function setupMobileMenu() {
+            const toggle = document.getElementById("mobile-toggle");
+            const close = document.getElementById("mobile-close");
+            const menu = document.getElementById("mobile-menu");
+
+            toggle.addEventListener("click", () => menu.style.display = "flex");
+            close.addEventListener("click", () => menu.style.display = "none");
+            
+            document.querySelectorAll(".mobile-nav-link").forEach(link => {
+                link.addEventListener("click", () => menu.style.display = "none");
+            });
+        }
+    </script>
+</body>
+</html>
